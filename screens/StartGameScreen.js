@@ -1,4 +1,5 @@
 import {useState} from "react";
+<<<<<<< HEAD
 import {
     TextInput, 
     View, 
@@ -9,6 +10,9 @@ import {
     keyboardAvoidingView,
     ScrollView,
 } from "react-native";
+=======
+import {TextInput, View, StyleSheet, Alert, Text} from "react-native";
+>>>>>>> 97caf6e60b6d663c19490f37162f95314ea78e75
 import Colors from "../constants/colors";
 
 
@@ -23,12 +27,15 @@ function StartGameScreen({onPickNumber}) {
     we will bind to the state variable enteredNumber*/
     const [enteredNumber, setEnteredNumber] = useState('');
     
+<<<<<<< HEAD
     /* the useWindowDimensions is a react-native hook used to get
     the width and height of a device  but it watches internally 
     to the changes of the device dimensions  and adjust accordingly
     for example the user switches from rotate to protrait */
     const {width, height}= useWindowDimensions();
     
+=======
+>>>>>>> 97caf6e60b6d663c19490f37162f95314ea78e75
     /* the function numberInputHandler is used to update the state variable enteredNumber
     when the user types in the TextInput. The function takes the 
     input value as a parameter and updates the state variable 
@@ -67,6 +74,7 @@ function StartGameScreen({onPickNumber}) {
         console.log("Valid Number!");
     }
 
+<<<<<<< HEAD
     const marginTopDistance = height < 380 ? 30 : 100;
 
     return(
@@ -76,6 +84,10 @@ function StartGameScreen({onPickNumber}) {
         other content  with it   */}
         <keyboardAvoidingView style = {styles.screen} behavior = "position">
         <View style={[styles.rootContainer, {marginTop: marginTopDistance}]}>
+=======
+    return(
+        <View style={styles.rootContainer}>
+>>>>>>> 97caf6e60b6d663c19490f37162f95314ea78e75
             <Title>Guess My Number</Title>
         <Card>
             <InstructionText>Enter a Number</InstructionText>
@@ -99,13 +111,17 @@ function StartGameScreen({onPickNumber}) {
             </View>
         </Card>
         </View>
+<<<<<<< HEAD
         </keyboardAvoidingView>
         </ScrollView>
+=======
+>>>>>>> 97caf6e60b6d663c19490f37162f95314ea78e75
     )
 }
 
 export default StartGameScreen;
 
+<<<<<<< HEAD
 // const deviceHeight = Dimensions.get('window').height;
 
 const styles = StyleSheet.create({
@@ -116,6 +132,12 @@ const styles = StyleSheet.create({
     rootContainer: {
         flex:1,
         // marginTop: deviceHeight < 380 ? 30 : 100,
+=======
+const styles = StyleSheet.create({
+    rootContainer: {
+        flex:1,
+        marginTop:100,
+>>>>>>> 97caf6e60b6d663c19490f37162f95314ea78e75
         alignItems:'center',
     },
 

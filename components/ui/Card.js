@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 import {View, StyleSheet, Dimensions} from 'react-native'
+=======
+import {View, StyleSheet} from 'react-native'
+>>>>>>> 97caf6e60b6d663c19490f37162f95314ea78e75
 import Colors from "../../constants/colors";
 
 function Card({children}) {
@@ -8,6 +12,7 @@ function Card({children}) {
         </View>
     )
 }
+<<<<<<< HEAD
 export default Card;
 
 /* Dimensions API is built in to react-native it is not a 
@@ -17,11 +22,18 @@ code including the styles to get info out of it some of the
 info we could get out of it are the device width and height*/
 
 const deviceWidth = Dimensions.get('window').width;
+=======
+export default Card
+>>>>>>> 97caf6e60b6d663c19490f37162f95314ea78e75
 
 const styles = StyleSheet.create({
     card: {
         // flex:1,
+<<<<<<< HEAD
         marginTop:deviceWidth < 380 ? 18 : 36,
+=======
+        marginTop:36,
+>>>>>>> 97caf6e60b6d663c19490f37162f95314ea78e75
         marginHorizontal:24,
         padding:16,
         backgroundColor:Colors.primary800, // backgroundColor is used to set the background color of the input container
