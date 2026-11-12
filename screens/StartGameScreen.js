@@ -1,5 +1,14 @@
 import {useState} from "react";
-import {TextInput, View, StyleSheet, Alert, Text} from "react-native";
+import {
+    TextInput, 
+    View, 
+    StyleSheet, 
+    Alert, 
+    Text, 
+    useWindowDimensions,
+    keyboardAvoidingView,
+    ScrollView,
+} from "react-native";
 import Colors from "../constants/colors";
 
 
@@ -13,6 +22,12 @@ function StartGameScreen({onPickNumber}) {
     in the useState is because the TextInput is a Value is a string which 
     we will bind to the state variable enteredNumber*/
     const [enteredNumber, setEnteredNumber] = useState('');
+    
+    /* the useWindowDimensions is a react-native hook used to get
+    the width and height of a device  but it watches internally 
+    to the changes of the device dimensions  and adjust accordingly
+    for example the user switches from rotate to protrait */
+    const {width, height}= useWindowDimensions();
     
     /* the function numberInputHandler is used to update the state variable enteredNumber
     when the user types in the TextInput. The function takes the 
@@ -52,8 +67,15 @@ function StartGameScreen({onPickNumber}) {
         console.log("Valid Number!");
     }
 
+    const marginTopDistance = height < 380 ? 30 : 100;
+
     return(
-        <View style={styles.rootContainer}>
+        <ScrollView style = {styles.screen}>
+        {/*  keyboardAovidingView is a react-native component  
+        which you an use in your JSX code that allows you to wrap
+        other content  with it   */}
+        <keyboardAvoidingView style = {styles.screen} behavior = "position">
+        <View style={[styles.rootContainer, {marginTop: marginTopDistance}]}>
             <Title>Guess My Number</Title>
         <Card>
             <InstructionText>Enter a Number</InstructionText>
@@ -77,15 +99,23 @@ function StartGameScreen({onPickNumber}) {
             </View>
         </Card>
         </View>
+        </keyboardAvoidingView>
+        </ScrollView>
     )
 }
 
 export default StartGameScreen;
 
+// const deviceHeight = Dimensions.get('window').height;
+
 const styles = StyleSheet.create({
+    screen: {
+        flex:1,
+    },
+
     rootContainer: {
         flex:1,
-        marginTop:100,
+        // marginTop: deviceHeight < 380 ? 30 : 100,
         alignItems:'center',
     },
 

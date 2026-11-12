@@ -1,6 +1,6 @@
 import {useState, useEffect} from "react";
 
-import {View,Text, StyleSheet, Alert, FlatList} from "react-native";
+import {View,Text, StyleSheet, Alert, FlatList, useWindowDimensions} from "react-native";
 import Ionicons from '@expo/vector-icons/Ionicons';
 
 import Title from "../components/ui/Title";
@@ -44,6 +44,12 @@ function GameScreen({userNumber, onGameOver}) {
     const [currentGuess, setCurrentGuess] = useState(initialGuess);
 
     const [guessRounds, setGuessRounds] = useState([initialGuess]);
+
+    /* the useWindowDimensions is a react-native hook used to get
+    the width and height of a device  but it watches internally 
+    to the changes of the device dimensions  and adjust accordingly
+    for example the user switches from rotate to protrait */
+    const {width, height} = useWindowDimensions()
     
     /* the useeffect hook hook is used to pass a function to 
     check if the currentGuess by the computer is equal to the 
@@ -89,11 +95,8 @@ function GameScreen({userNumber, onGameOver}) {
 
     const guessRoundsListLength= guessRounds.length;
 
-    return(
-        <View style={styles.screen}>
-            <Title>Opponent's Guess</Title>
-            {/* GUESS */}
-            <NumberContainer>{currentGuess}</NumberContainer>
+    let content = <>
+    <NumberContainer>{currentGuess}</NumberContainer>
             <Card>
                 {/* we want to put the button in a row that why  it is
                 wraped with the view components and we used our custom 
@@ -114,6 +117,31 @@ function GameScreen({userNumber, onGameOver}) {
                     </View>
                 </View>
             </Card>
+    </>;
+
+    if (width > 500) {
+        content = (<>
+        <View style = {styles.buttonsWide}>
+            <View style={styles.button}>
+                <PrimaryButton onPress={nextGuessHandler.bind(this, 'higher')}>
+                    <Ionicons name='add' size={24}/>
+                </PrimaryButton>
+            </View>
+            <NumberContainer>{currentGuess}</NumberContainer>
+            <View style={styles.button}>
+                <PrimaryButton onPress={nextGuessHandler.bind(this, 'lower')}>
+                    <Ionicons name='remove' size={24}/>
+                </PrimaryButton>
+            </View>
+        </View>
+        </>);
+    }
+
+    return(
+        <View style={styles.screen}>
+            <Title>Opponent's Guess</Title>
+            {/* GUESS */}
+            {content}
             {/*  LOG ROUNDs */}
             <View style = {styles.listContainer}>
                 {/* {guessRounds.map(guessRound => <Text key={guessRound}>{guessRound}</Text>)} */}
@@ -133,6 +161,7 @@ const styles = StyleSheet.create({
     screen: {
         flex:1,
         padding:24,
+        alignItems: "center"
     },
     instructionText:{
         marginBottom:12
@@ -142,6 +171,10 @@ const styles = StyleSheet.create({
     },
     button:{
         flex: 1,
+    },
+    buttonsWide: {
+        flexDirection: 'row',
+        alignItems: 'center'
     },
     listContainer: {
         flex:1,

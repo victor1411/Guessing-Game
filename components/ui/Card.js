@@ -1,4 +1,4 @@
-import {View, StyleSheet} from 'react-native'
+import {View, StyleSheet, Dimensions} from 'react-native'
 import Colors from "../../constants/colors";
 
 function Card({children}) {
@@ -8,12 +8,20 @@ function Card({children}) {
         </View>
     )
 }
-export default Card
+export default Card;
+
+/* Dimensions API is built in to react-native it is not a 
+component we will use in the JSX code instead it is a 
+javascript object we can use any where in our javascript
+code including the styles to get info out of it some of the 
+info we could get out of it are the device width and height*/
+
+const deviceWidth = Dimensions.get('window').width;
 
 const styles = StyleSheet.create({
     card: {
         // flex:1,
-        marginTop:36,
+        marginTop:deviceWidth < 380 ? 18 : 36,
         marginHorizontal:24,
         padding:16,
         backgroundColor:Colors.primary800, // backgroundColor is used to set the background color of the input container
