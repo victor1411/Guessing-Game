@@ -3,10 +3,8 @@ import { StyleSheet, ImageBackground,SafeAreaView } from 'react-native';
 import {LinearGradient} from 'expo-linear-gradient';
 import {useFonts} from "expo-font"
 import AppLoading from "expo-app-loading"
-<<<<<<< HEAD
 import {StatusBar} from 'expo-status-bar'
-=======
->>>>>>> 97caf6e60b6d663c19490f37162f95314ea78e75
+
 
 import StartGameScreen from './screens/StartGameScreen';
 import GameScreen from './screens/GameScreen';
@@ -71,11 +69,9 @@ export default function App() {
   
 
   return (
-<<<<<<< HEAD
     <>
     <StatusBar style= 'light' />
-=======
->>>>>>> 97caf6e60b6d663c19490f37162f95314ea78e75
+
     /*by default View only takes as much space 
     as its content requires */
     <LinearGradient colors={[Colors.primary700, Colors.accent500]} style={styles.rootScreen}>
@@ -94,10 +90,7 @@ export default function App() {
         <SafeAreaView style={styles.rootScreen}>{screen}</SafeAreaView>
       </ImageBackground>
     </LinearGradient>
-<<<<<<< HEAD
     </>
-=======
->>>>>>> 97caf6e60b6d663c19490f37162f95314ea78e75
   );
 }
 
